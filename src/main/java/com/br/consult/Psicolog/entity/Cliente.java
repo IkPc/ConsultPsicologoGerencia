@@ -1,12 +1,23 @@
 package com.br.consult.Psicolog.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Cliente implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -23,5 +34,6 @@ public class Cliente implements Serializable {
 
     private String email;
 
+    private String quantConsultas;
 
 }
