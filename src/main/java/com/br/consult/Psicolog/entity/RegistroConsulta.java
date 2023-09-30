@@ -1,7 +1,5 @@
 package com.br.consult.Psicolog.entity;
 
-import com.br.consult.Psicolog.entity.Psicologo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,20 +11,20 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Consulta implements Serializable {
+public class RegistroConsulta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    @ManyToOne
+    @JoinColumn(name="matricula_id")
+    private MatriculaCliente matricula;
 
     @ManyToOne
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name="consulta_id")
+    private Consulta consulta;
 
-    @ManyToOne
-    @JoinColumn(name="psicologo_id")
-    private Psicologo psicologo;
+    private String status;
 
 }

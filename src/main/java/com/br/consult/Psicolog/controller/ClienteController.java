@@ -1,6 +1,5 @@
 package com.br.consult.Psicolog.controller;
 
-import com.br.consult.Psicolog.dto.ClienteQuantConsulDTO;
 import com.br.consult.Psicolog.entity.Cliente;
 import com.br.consult.Psicolog.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;

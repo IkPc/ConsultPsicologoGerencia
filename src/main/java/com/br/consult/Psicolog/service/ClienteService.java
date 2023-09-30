@@ -1,6 +1,5 @@
 package com.br.consult.Psicolog.service;
 
-import com.br.consult.Psicolog.dto.ClienteQuantConsulDTO;
 import com.br.consult.Psicolog.entity.Cliente;
 import com.br.consult.Psicolog.repository.ClienteRepository;
 
