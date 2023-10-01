@@ -27,10 +27,10 @@ public class ClienteController {
         return service.listaPorNome(nome);
     }
 
-    @PostMapping("/listar-por-nome-curso")
+    @PostMapping("/listar-por-nome-email")
     @ResponseStatus(HttpStatus.OK)
-    public List<Cliente> buscarNomeOrQuantConsulta(@RequestBody ClienteQuantConsulDTO dto) {
-        return service.listaPorNomeOrQuantConsulta(dto);
+    public List<Cliente> buscarNomeOrEmail(@RequestBody Cliente dto) {
+        return service.listaPorNomeOrEmail(dto);
     }
 
     @GetMapping("/atualiza-email/{email}/{id}")

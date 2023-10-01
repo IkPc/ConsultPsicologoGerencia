@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class MatriculaClienteProgressoOnlyDTO {
 
-    private Double nota1;
-    private Double nota2;
+    private String Progresso;
+    private String status;
 }

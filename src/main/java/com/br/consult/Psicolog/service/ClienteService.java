@@ -24,9 +24,10 @@ public class ClienteService {
         return repository.findByNomeContainsIgnoreCase(nome);
     }
 
-    public List<Cliente> listaPorNomeOrQuantConsulta(ClienteQuantConsulDTO dto){
-        return repository.findByNomeOrConsulta(dto.getNome(), dto.getQuantConsulta());
+    public List<Cliente> listaPorNomeOrEmail(Cliente dto) {
+        return repository.findByNomeOrEmail(dto.getNome(), dto.getEmail());
     }
+
     @Transactional
     public void atualizaEmailCliente(String email, Long id){
         repository.atualizaEmailCliente(email, id);
@@ -35,5 +36,4 @@ public class ClienteService {
     public List<Cliente> listaClienteConsulta(Long idConsulta){
         return repository.listaClienteConsulta(idConsulta);
     }
-
 }

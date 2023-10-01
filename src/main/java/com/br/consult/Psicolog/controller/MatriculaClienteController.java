@@ -1,7 +1,7 @@
 package com.br.consult.Psicolog.controller;
 
-import com.br.consult.Psicolog.dto.HistoricoClienteDto;
-import com.br.consult.Psicolog.dto.MatriculaClienteNotasOnlyDto;
+import com.br.consult.Psicolog.dto.HistoricoClienteDTO;
+import com.br.consult.Psicolog.dto.MatriculaClienteProgressoOnlyDTO;
 import com.br.consult.Psicolog.entity.Cliente;
 import com.br.consult.Psicolog.entity.MatriculaCliente;
 import com.br.consult.Psicolog.service.MatriculaClienteService;
@@ -32,13 +32,6 @@ public class MatriculaClienteController {
     @ResponseStatus(HttpStatus.OK)
     public void patchStatus(@PathVariable Long id) throws Exception {
         service.trancarMatricula(id);
-    }
-
-    @GetMapping("/cliente/media/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Double retornaMediaClientes() {
-
-        return service.retonaMediaCliente();
     }
 
     @GetMapping(value = "/cliente/status/{status}", produces = MediaType.APPLICATION_JSON_VALUE)

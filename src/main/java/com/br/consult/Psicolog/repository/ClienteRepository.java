@@ -15,7 +15,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     List<Cliente> findByNomeContainsIgnoreCase(String nome);
 
-    List<Cliente> findByNomeOrConsulta(String nome, String Consulta);
+    List<Cliente> findByNomeOrEmail(String nome, String Email);
 
     @Modifying
     @Query("update Cliente a set a.email = ?1 where a.id = ?2")
