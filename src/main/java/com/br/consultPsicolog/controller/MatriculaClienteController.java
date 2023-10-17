@@ -5,8 +5,8 @@ import com.br.consultPsicolog.entity.MatriculaCliente;
 import com.br.consultPsicolog.service.MatriculaClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,15 +15,18 @@ import java.util.List;
 @RequestMapping("/matricula-cliente")
 public class MatriculaClienteController {
 
+    private final MatriculaClienteService service;
+
     @Autowired
-    MatriculaClienteService service;
+    public MatriculaClienteController(MatriculaClienteService service) {
+        this.service = service;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MatriculaCliente> create(@RequestBody MatriculaCliente matriculaCliente) {
         MatriculaCliente matriculaClienteCreated = service.create(matriculaCliente);
-
-        return ResponseEntity.status(201).body(matriculaClienteCreated);
+        return ResponseEntity.status(HttpStatus.CREATED).body(matriculaClienteCreated);
     }
 
     @PatchMapping("/trancar-matricula/{id}")
@@ -32,11 +35,10 @@ public class MatriculaClienteController {
         service.trancarMatricula(id);
     }
 
-    @GetMapping(value = "/cliente/status/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/cliente/status/{status}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAnyRole('DIRETOR', 'USUARIO')") // Ajuste as permissões conforme necessário
     public List<Cliente> retornaClientesStatus(@PathVariable String status) {
-
         return service.retonaClientesStatus(status);
     }
-
 }
