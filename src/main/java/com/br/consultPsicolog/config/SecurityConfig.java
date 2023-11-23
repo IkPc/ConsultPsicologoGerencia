@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/cliente/**").hasRole("USER")
                 .antMatchers("/matricula-cliente/**").hasRole("ADMIN")
-                .antMatchers("/registro-consulta/**").hasRole("GERENTE")
+                .antMatchers("/registro-consulta/**").hasRole("PSICOLOGO")
                 .antMatchers("/v2/api-docs", "/swagger-resources/**", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -43,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("pabllo").password("senhadifici").roles("ADMIN")
                 .and().withUser("joão").password("1234").roles("USER")
-                .and().withUser("claudio").password("1234").roles("GERENTE");
+                .and().withUser("claudio").password("1234").roles("PSICOLOGO");
 
 
         //.withUser("joão").password(new BCryptPasswordEncoder().encode("1234")).roles("USER");
-        //.and().withUser("marcelo").password("1234").roles("GERENTE");
+        //.and().withUser("marcelo").password("1234").roles("PSICOLOGO");
     }
 
     @Bean
